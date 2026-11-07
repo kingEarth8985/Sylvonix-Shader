@@ -30,12 +30,6 @@ This project provides a small CLI for compiling shader sources using Slang. It i
 
 ## Build
 
-```bash
-export VULKAN_SDK=/path/to/your/vulkan/sdk
-cmake -S . -B build
-cmake --build build
-```
-
 ## Usage
 
 The current CLI supports a version flag and a shader type/path pair:
@@ -49,9 +43,9 @@ The current CLI supports a version flag and a shader type/path pair:
 Example:
 
 ```bash
-./build/SylvonixShader -t fragment ./shaders/example.slang
+./build/SylvonixShader -t slang example.slang
 ```
 
 ## Notes
 
-This repository is a small experimental shader compiler project. The current implementation prints the selected options and invokes the Slang compiler wrapper for the target shader file.
+In the future sylvonix shader should also support hlsl as an alternative to slang.

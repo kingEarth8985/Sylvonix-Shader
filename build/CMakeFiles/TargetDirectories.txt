@@ -1,0 +1,3 @@
+C:/Projects/Sylvonix-Shader/build/CMakeFiles/SylvonixShader.dir
+C:/Projects/Sylvonix-Shader/build/CMakeFiles/ALL_BUILD.dir
+C:/Projects/Sylvonix-Shader/build/CMakeFiles/ZERO_CHECK.dir

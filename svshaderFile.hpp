@@ -30,6 +30,14 @@ struct SVShaderStage
         Spirv;
 };
 
+struct SVResourceHeader
+{
+    uint32_t NameLength;
+
+    uint32_t Set;
+    uint32_t Binding;
+};
+
 struct SVResource
 {
     std::string Name;
@@ -58,6 +66,19 @@ public:
 
     void Save(
         const std::string& path);
+    
+    void Load(
+        const std::string& path);
+
+    std::vector<SVShaderStage> GetStages() const
+    {
+        return shaderStages;
+    }
+
+    std::vector<SVResource> GetResources() const
+    {
+        return resources;
+    }
 
 private:
 

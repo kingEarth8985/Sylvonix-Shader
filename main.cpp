@@ -11,6 +11,51 @@ struct CompileOptions
     std::string path;
 };
 
+void ReadBack(
+    const std::string& path)
+{
+    SVFile file;
+
+    file.Load(path);
+
+    std::cout
+        << "=== READBACK ===\n";
+
+    for(const auto& stage :
+        file.GetStages())
+    {
+        std::cout
+            << "\nName: "
+            << stage.Name << '\n'
+            << "Stage: " << stage.Stage
+            << '\n';
+
+        std::cout
+            << "SPIR-V Size: "
+            << stage.Spirv.size() * sizeof(uint32_t)
+            << " bytes\n";
+    }
+
+    for(const auto& parameter :
+        file.GetResources())
+    {
+        std::cout
+            << "\nParameter: "
+            << parameter.Name
+            << '\n';
+
+        std::cout
+            << "  Set: "
+            << parameter.Set
+            << '\n';
+
+        std::cout
+            << "  Binding: "
+            << parameter.Binding
+            << '\n';
+    }
+}
+
 int main(
     int argc,
     char** argv)
@@ -33,6 +78,22 @@ int main(
             << "SVShaderCompiler "
             << VERSION
             << '\n';
+
+        return 0;
+    }
+
+    if(command == "--readback")
+    {
+        if(argc < 3)
+        {
+            std::cerr
+                << "Usage: --readback <file.hsvs>\n";
+
+            return 1;
+        }
+
+        ReadBack(
+            argv[2]);
 
         return 0;
     }
